@@ -1,7 +1,33 @@
 @import "tailwindcss";
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+:root {
+  --background: 255 255 255;
+  --text: 17 17 17;
+  --input: 59 130 246;
+  --field: 212, 161, 66;
+  --field-text: 112, 77, 12;
+
+  @layer components {
+    .field {
+      @apply rounded-lg bg-yellow-500 text-amber-900;
+    }
+  }
+}
+
+/* Dark theme */
+.dark-theme {
+  --background: 2 2 18;
+  --text: 255 255 255;
+  --input: 30 30 33;
+  --field-background: 30 30 33;
+  --fiel-text: 168, 167, 167;
+
+  @layer components {
+    .input-style {
+      @apply rounded-lg bg-[rgb(var(--input))] px-3 py-1 placeholder:text-white outline-none focus:ring-1;
+    }
+    .field {
+      @apply rounded-lg bg-[rgb(var(--field-background))] text-zinc-400;
+    }
+  }
 }
