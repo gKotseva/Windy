@@ -20,7 +20,7 @@ export const Sidebar = () => {
           <p className="mt-2">Map</p>
         </div>
       </div>
-      <div className="mb-5">
+      <div>
         <Toggle />
       </div>
     </div>
