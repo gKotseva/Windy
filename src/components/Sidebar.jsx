@@ -7,15 +7,15 @@ export const Sidebar = () => {
   return (
     <div className="field flex flex-col justify-between min-h-screen w-30 items-center pt-20">
       <div className="flex flex-col gap-10 items-center">
-        <div className="flex flex-col items-center cursor-pointer">
+        <div className="flex flex-col items-center cursor-pointer transition-transform duration-300 hover:scale-105 hover:text-white">
           <TiWeatherPartlySunny size={35} />
           <p className="mt-2">Weather</p>
         </div>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:text-white">
           <FaList size={35} />
           <p className="mt-2">Cities</p>
         </div>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:text-white">
           <SiOpenstreetmap size={35} />
           <p className="mt-2">Map</p>
         </div>
