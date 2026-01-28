@@ -4,15 +4,32 @@ import { WiRaindrop } from "react-icons/wi";
 import { WiStrongWind } from "react-icons/wi";
 import { WiThermometer } from "react-icons/wi";
 import { WiHumidity } from "react-icons/wi";
-import { WiBarometer } from "react-icons/wi";
-import { WiFog } from "react-icons/wi";
+import { useWeather } from "../context/Weather";
+import { WiSunrise } from "react-icons/wi";
+import { WiSunset } from "react-icons/wi";
+import { WiCloudyGusts } from "react-icons/wi";
+import { WiDirectionDown } from "react-icons/wi";
 
 export const AirConditions = () => {
   const [isMore, setIsMore] = useState(false);
+  const {
+    current: {
+      temperature,
+      feels_like,
+      chance_of_rain,
+      sun_rise,
+      sun_set,
+      humidity,
+      surface_pressure,
+      wind_gusts,
+      wind_speed,
+    },
+  } = useWeather();
+
   return (
-    <div className="field flex flex-col gap-10 w-160">
+    <div className="field flex flex-col gap-3">
       <div className="flex justify-between">
-        <h1 className="uppercase">Air Conditions</h1>
+        <h1 className="uppercase font-bold">Air Conditions</h1>
         <button className="button" onClick={() => setIsMore(!isMore)}>
           {isMore ? "See less" : "See more"}
         </button>
@@ -20,47 +37,65 @@ export const AirConditions = () => {
       <div className="flex flex-wrap gap-y-10 gap-x-0">
         <div className="w-1/2">
           <div className="flex gap-2">
+            <WiSunrise className="text-3xl" />
+            <h3>Sun Rise</h3>
+          </div>
+          <p className="text-2xl text-white ">
+            {new Date(sun_rise).getHours()}:{new Date(sun_rise).getMinutes()}
+          </p>
+        </div>
+        <div className="w-1/2">
+          <div className="flex gap-2">
+            <WiSunset className="text-3xl" />
+            <h3>Sun Set</h3>
+          </div>
+          <p className="text-2xl text-white ">
+            {new Date(sun_set).getHours()}:{new Date(sun_set).getMinutes()}
+          </p>
+        </div>
+        <div className="w-1/2">
+          <div className="flex gap-2">
             <WiThermometer className="text-3xl" />
             <h3>Feels like</h3>
           </div>
-          <p className="text-2xl text-white ">30&#176;</p>
+          <p className="text-2xl text-white ">{feels_like.toFixed()}&#176;</p>
         </div>
         <div className="w-1/2">
           <div className="flex gap-2">
             <WiStrongWind className="text-3xl" />
-            <h3>Wind</h3>
+            <h3>Wind Speed</h3>
           </div>
-          <p className="text-2xl text-white ">0.2 km/h</p>
+          <p className="text-2xl text-white ">{wind_speed} km/h</p>
         </div>
         <div className="w-1/2">
           <div className="flex gap-2">
             <WiRaindrop className="text-3xl" />
             <h3>Chance of rain</h3>
           </div>
-          <p className="text-2xl text-white ">23%</p>
+          <p className="text-2xl text-white ">{chance_of_rain}%</p>
         </div>
         <div className="w-1/2">
           <div className="flex gap-2">
-            <WiHumidity className="text-3xl" />
-            <h3>Humidity</h3>
+            <WiCloudyGusts className="text-3xl" />
+            <h3>Wind Gusts</h3>
           </div>
-          <p className="text-2xl text-white ">50</p>
+          <p className="text-2xl text-white ">{wind_gusts} km/h</p>
         </div>
         {isMore && (
           <>
             <div className="w-1/2">
               <div className="flex gap-2">
-                <WiBarometer className="text-3xl" />
-                <h3>Pressure</h3>
+                <WiHumidity className="text-3xl" />
+                <h3>Humidity</h3>
               </div>
-              <p className="text-2xl text-white ">50</p>
+              <p className="text-2xl text-white ">{humidity}%</p>
             </div>
             <div className="w-1/2">
               <div className="flex gap-2">
-                <WiFog className="text-3xl" />
-                <h3>Visibility</h3>
+                <WiDirectionDown className="text-3xl" />
+                <h3>Surface Pressure</h3>
               </div>
-              <p className="text-2xl text-white ">50</p>
+              <p className="text-2xl text-white ">{surface_pressure} hPa</p>
             </div>
           </>
         )}
