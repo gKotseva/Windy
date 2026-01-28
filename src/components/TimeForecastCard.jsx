@@ -1,11 +1,13 @@
-import { FaCloud } from "react-icons/fa";
+import { getWeatherIcon } from "../utils/weatherIcons";
 
-export const TimeForecastCard = () => {
+export const TimeForecastCard = ({ time, weather }) => {
+  const Icon = getWeatherIcon(weather.weather_code, time);
+
   return (
     <div className="flex flex-col gap-4 items-center px-6">
-      <h3 className="font-bold">6:00 AM</h3>
-      <FaCloud color="white" size={50} />
-      <h3 className="text-white">25&#176;</h3>
+      <h3 className="font-bold">{time}</h3>
+      <Icon color="white" size={70} />
+      <h3 className="text-white">{weather.temperature.toFixed()}&#176;</h3>
     </div>
   );
 };
