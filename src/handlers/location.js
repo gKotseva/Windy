@@ -28,3 +28,13 @@ export const getCityName = async (latitude, longitude) => {
 
   return data.address.city || data.address.state;
 };
+
+export const getCityCoordinates = async (city) => {
+  const res = await fetch(
+    `https://geocoding-api.open-meteo.com/v1/search?name=${city}`,
+  );
+
+  const data = await res.json();
+
+  return data.results;
+};
