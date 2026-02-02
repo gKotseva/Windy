@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchCurrentWeather, todayWeather } from "../handlers/weather";
 import { getCityName, getUserLocation } from "../handlers/location";
+import { Loader } from "../components/Loader";
 
 const WeatherContext = createContext();
 
@@ -44,7 +45,7 @@ export const WeatherProvider = ({ children }) => {
     forecastQuery.isLoading ||
     cityNameQuery.isLoading
   ) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const value = {
@@ -90,6 +91,7 @@ export const WeatherProvider = ({ children }) => {
         weather_code: forecastQuery.data.hourly.weather_code[21],
       },
     },
+    state: { location, setLocation },
   };
 
   return (
