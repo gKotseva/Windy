@@ -13,7 +13,7 @@ import {
   WiNightAltPartlyCloudy,
 } from "react-icons/wi";
 
-const dayIcons = {
+export const dayIcons = {
   0: WiDaySunny,
   1: WiDaySunnyOvercast,
   2: WiDayCloudy,
