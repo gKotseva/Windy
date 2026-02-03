@@ -42,6 +42,10 @@ const nightIcons = {
 };
 
 export const getWeatherIcon = (code, time) => {
+  if (!time) {
+    return dayIcons[code] || WiDaySunny;
+  }
+
   const hour = parseInt(time.split(":")[0]);
   const isNight = hour < 6 || hour >= 18;
 
