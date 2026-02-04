@@ -25,6 +25,9 @@
     .secondary-text {
       @apply text-blue-950;
     }
+    .loader {
+      @apply text-black;
+    }
   }
 }
 
@@ -48,6 +51,9 @@
     }
     .secondary-text {
       @apply text-zinc-400;
+    }
+    .loader {
+      @apply text-white;
     }
   }
 }
