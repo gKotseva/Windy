@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { createContext, useContext, useEffect, useState } from "react";
-import { fetchCurrentWeather, todayWeather } from "../handlers/weather";
+import {
+  fetchCurrentWeather,
+  sevenDaysWeather,
+  todayWeather,
+} from "../handlers/weather";
 import { getCityName, getUserLocation } from "../handlers/location";
 import { Loader } from "../components/Loader";
 
@@ -39,11 +43,18 @@ export const WeatherProvider = ({ children }) => {
     enabled: !!location,
   });
 
+  const sevenDaysQuery = useQuery({
+    queryFn: () => sevenDaysWeather(location.latitude, location.longitude),
+    queryKey: ["7days", location],
+    enabled: !!location,
+  });
+
   if (
     !location ||
     currentQuery.isLoading ||
     forecastQuery.isLoading ||
-    cityNameQuery.isLoading
+    cityNameQuery.isLoading ||
+    sevenDaysQuery.isLoading
   ) {
     return <Loader />;
   }
@@ -92,6 +103,7 @@ export const WeatherProvider = ({ children }) => {
       },
     },
     state: { location, setLocation },
+    sevenDays: sevenDaysQuery.data,
   };
 
   return (
