@@ -26,7 +26,7 @@ export const CurrentWeather = () => {
           Feels like: {feels_like.toFixed()}&#176;
         </p>
       </div>
-      <div>
+      <div className="main-text">
         <Icon size={200} />
       </div>
     </div>
