@@ -8,9 +8,6 @@ import { TimeForecastContainer } from "../components/TimeForecastContainer";
 export const Main = () => {
   return (
     <div className="flex m-5 w-full justify-between">
-      <div>
-        <Sidebar />
-      </div>
       <div className="flex flex-col gap-3">
         <Search />
         <CurrentWeather />
