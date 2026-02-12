@@ -11,7 +11,7 @@ import {
 } from "react-leaflet";
 import { useWeather } from "../context/Weather";
 
-export const Map = () => {
+export const LocationMap = () => {
   const { state } = useWeather();
   const markerRef = useRef(null);
 
@@ -19,7 +19,7 @@ export const Map = () => {
     <MapContainer
       center={[state.location.latitude, state.location.longitude]}
       zoom={5}
-      style={{ height: "50vh", width: "90%" }}
+      style={{ height: "100vh", width: "100%" }}
       scrollWheelZoom={false}
     >
       <TileLayer
