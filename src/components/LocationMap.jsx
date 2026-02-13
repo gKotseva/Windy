@@ -10,6 +10,7 @@ import {
   useMapEvent,
 } from "react-leaflet";
 import { useWeather } from "../context/Weather";
+import { WeatherCard } from "./WeatherCard";
 
 export const LocationMap = () => {
   const { state } = useWeather();
@@ -30,7 +31,9 @@ export const LocationMap = () => {
         ref={markerRef}
         position={[state.location.latitude, state.location.longitude]}
       >
-        <Popup>Hello</Popup>
+        <Popup>
+          <WeatherCard />
+        </Popup>
       </Marker>
       <MapClickHandler setLocation={state.setLocation} markerRef={markerRef} />
     </MapContainer>
