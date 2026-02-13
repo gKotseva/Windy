@@ -1,3 +1,4 @@
+@import "leaflet/dist/leaflet.css";
 @import "tailwindcss";
 
 * {
@@ -6,54 +7,80 @@
 
 :root {
   --background: 208 208 208;
-  --input: 59 130 246;
-  --field-background: 102, 156, 217;
-
-  @layer components {
-    .input-style {
-      @apply rounded-lg bg-[rgb(var(--field-background))] px-4 py-3 placeholder:text-blue-950 outline-white focus:ring-1 min-w-full;
-    }
-    .field {
-      @apply rounded-lg bg-[rgb(var(--field-background))] text-blue-950 p-6;
-    }
-    .button {
-      @apply rounded-4xl p-1 px-5 bg-gradient-to-b bg-gradient-to-r from-amber-200 to-yellow-500 text-white cursor-pointer transition-transform duration-300 hover:scale-105;
-    }
-    .main-text {
-      @apply text-black;
-    }
-    .secondary-text {
-      @apply text-blue-950;
-    }
-    .loader {
-      @apply text-black;
-    }
-  }
+  --field-background: 102 156 217;
+  --text-color: 30, 30, 30;
 }
 
-/* Dark theme */
 .dark-theme {
   --background: 2 2 18;
   --field-background: 30 30 33;
+  --text-color: 220, 220, 220;
+}
 
-  @layer components {
-    .input-style {
-      @apply rounded-lg bg-[rgb(var(--field-background))] px-4 py-3 placeholder:text-white outline-white text-white focus:ring-1 min-w-full;
-    }
-    .field {
-      @apply rounded-lg bg-[rgb(var(--field-background))] text-zinc-400 p-6;
-    }
-    .button {
-      @apply rounded-4xl p-1 px-5 bg-gradient-to-b from-sky-600 via-cyan-400 to-blue-600 text-white cursor-pointer transition-transform duration-300 hover:scale-105;
-    }
-    .main-text {
-      @apply text-white;
-    }
-    .secondary-text {
-      @apply text-zinc-400;
-    }
-    .loader {
-      @apply text-white;
-    }
+@layer components {
+  .input-style {
+    @apply rounded-lg bg-[rgb(var(--field-background))] px-4 py-3 placeholder:text-blue-950 outline-white focus:ring-1 min-w-full;
   }
+
+  .field {
+    @apply rounded-lg bg-[rgb(var(--field-background))] text-blue-950 p-6;
+  }
+
+  .button {
+    @apply rounded-4xl p-1 px-5 bg-gradient-to-b bg-gradient-to-r from-amber-200 to-yellow-500 text-white cursor-pointer transition-transform duration-300 hover:scale-105;
+  }
+
+  .main-text {
+    @apply text-black;
+  }
+
+  .secondary-text {
+    @apply text-blue-950;
+  }
+
+  .loader {
+    @apply text-black;
+  }
+
+  .dark-theme .input-style {
+    @apply text-white placeholder:text-white bg-[rgb(var(--field-background))];
+  }
+
+  .dark-theme .field {
+    @apply text-zinc-400 bg-[rgb(var(--field-background))];
+  }
+
+  .dark-theme .button {
+    @apply from-sky-600 via-cyan-400 to-blue-600 text-white;
+  }
+
+  .dark-theme .main-text {
+    @apply text-white;
+  }
+
+  .dark-theme .secondary-text {
+    @apply text-zinc-400;
+  }
+
+  .dark-theme .loader {
+    @apply text-white;
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgb(var(--field-background));
+  color: #1e293b;
+}
+
+.leaflet-popup-tip {
+  background: rgb(var(--field-background));
+}
+
+.dark-theme .leaflet-popup-content-wrapper {
+  background: rgb(var(--field-background));
+  color: #e4e4e7;
+}
+
+.dark-theme .leaflet-popup-tip {
+  background: rgb(var(--field-background));
 }
