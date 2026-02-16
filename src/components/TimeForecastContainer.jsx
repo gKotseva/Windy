@@ -6,7 +6,7 @@ export const TimeForecastContainer = () => {
 
   return (
     <div className="field">
-      <div className="uppercase mb-[30px] font-bold">Today's Forecast</div>
+      <div className="uppercase mb-7.5 font-bold">Today's Forecast</div>
       <div className="flex divide-x divide-white/20">
         {Object.keys(today).map((key) => (
           <TimeForecastCard time={key} weather={today[key]} key={key} />

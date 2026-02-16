@@ -27,7 +27,7 @@
   }
 
   .button {
-    @apply rounded-4xl p-1 px-5 bg-gradient-to-b bg-gradient-to-r from-amber-200 to-yellow-500 text-white cursor-pointer transition-transform duration-300 hover:scale-105;
+    @apply rounded-4xl p-1 px-5 bg-linear-to-b bg-linear-to-r from-amber-200 to-yellow-500 text-white cursor-pointer transition-transform duration-300 hover:scale-105;
   }
 
   .main-text {
