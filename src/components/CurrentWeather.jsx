@@ -12,7 +12,8 @@ export const CurrentWeather = () => {
       time,
     },
   } = useWeather();
-  const Icon = getWeatherIcon(weather_code, time);
+
+  const iconSrc = getWeatherIcon(weather_code, time);
 
   return (
     <div className="flex w-full justify-between items-center max-h-56 p-20">
@@ -27,7 +28,11 @@ export const CurrentWeather = () => {
         </p>
       </div>
       <div className="main-text">
-        <Icon size={200} />
+        <img
+          src={iconSrc}
+          alt="weather icon"
+          className="w-[200px] h-[200px] object-contain"
+        />
       </div>
     </div>
   );

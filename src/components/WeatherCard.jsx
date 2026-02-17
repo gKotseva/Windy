@@ -3,7 +3,7 @@ import { getWeatherIcon } from "../utils/weatherIcons";
 
 export const WeatherCard = () => {
   const { current } = useWeather();
-  const Icon = getWeatherIcon(current.weather_code, current.time);
+  const iconSrc = getWeatherIcon(current.weather_code, current.time);
 
   return (
     <div className="w-50">
@@ -12,7 +12,7 @@ export const WeatherCard = () => {
           <h1 className="text-2xl font-bold main-text">{current.city}</h1>
           <h2 className="text-4xl font-bold mt-1">25°</h2>
         </div>
-        <Icon size={100} />
+        <img src={iconSrc} alt="weather icon" className="w-20" />
       </div>
       <p>Chance of rain: {current.chance_of_rain} %</p>
     </div>
