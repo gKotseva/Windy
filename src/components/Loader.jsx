@@ -2,27 +2,27 @@ import { useEffect, useState } from "react";
 import { dayIcons } from "../utils/weatherIcons";
 
 export const Loader = ({ fullPage = true }) => {
-  const iconComponents = Object.values(dayIcons);
-
+  const iconPaths = Object.values(dayIcons);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % iconComponents.length);
+      setIndex((prev) => (prev + 1) % iconPaths.length);
     }, 1000);
-
     return () => clearInterval(interval);
-  }, [iconComponents.length]);
-
-  const Icon = iconComponents[index];
+  }, [iconPaths.length]);
 
   const containerClasses = fullPage
     ? "fixed inset-0 flex justify-center items-center z-50"
-    : `flex justify-center items-center h-70`;
+    : "flex justify-center items-center h-70";
 
   return (
     <div className={containerClasses}>
-      <Icon className="loader text-8xl animate-bounce" />
+      <img
+        src={iconPaths[index]}
+        alt="loading icon"
+        className="loader w-20 h-20 animate-bounce"
+      />
     </div>
   );
 };

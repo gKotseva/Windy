@@ -1,49 +1,34 @@
-import {
-  WiDaySunny,
-  WiDaySunnyOvercast,
-  WiDayCloudy,
-  WiCloudy,
-  WiRain,
-  WiRainWind,
-  WiSnow,
-  WiThunderstorm,
-  WiFog,
-  WiNightClear,
-  WiNightAltCloudy,
-  WiNightAltPartlyCloudy,
-} from "react-icons/wi";
-
 export const dayIcons = {
-  0: WiDaySunny,
-  1: WiDaySunnyOvercast,
-  2: WiDayCloudy,
-  3: WiCloudy,
-  45: WiFog,
-  48: WiFog,
-  51: WiRain,
-  53: WiRain,
-  55: WiRain,
-  61: WiRain,
-  63: WiRainWind,
-  65: WiRainWind,
-  71: WiSnow,
-  73: WiSnow,
-  75: WiSnow,
-  95: WiThunderstorm,
-  96: WiThunderstorm,
-  99: WiThunderstorm,
+  0: "/sun.png",
+  1: "/day-cloudy.png",
+  2: "/day-cloudy.png",
+  3: "/day-cloudy.png",
+  45: "/day-foggy.png",
+  48: "/day-foggy.png",
+  51: "/day-rain.png",
+  53: "/day-rain.png",
+  55: "/day-rain.png",
+  61: "/day-rain.png",
+  63: "/day-rain.png",
+  65: "/day-rain.png",
+  71: "/day-snow.png",
+  73: "/day-snow.png",
+  75: "/day-snow.png",
+  95: "/day-thunderstorm.png",
+  96: "/day-thunderstorm.png",
+  99: "/day-thunderstorm.png",
 };
 
 const nightIcons = {
-  0: WiNightClear,
-  1: WiNightAltCloudy,
-  2: WiNightAltPartlyCloudy,
-  3: WiCloudy,
+  0: "/night-clear.png",
+  1: "/night-cloudy.png",
+  2: "/night-cloudy.png",
+  3: "/night-cloudy.png",
 };
 
 export const getWeatherIcon = (code, time) => {
   if (!time) {
-    return dayIcons[code] || WiDaySunny;
+    return dayIcons[code] || "sun.png";
   }
 
   const hour = parseInt(time.split(":")[0]);
@@ -53,5 +38,5 @@ export const getWeatherIcon = (code, time) => {
     return nightIcons[code];
   }
 
-  return dayIcons[code] || WiDaySunny;
+  return dayIcons[code] || "sun.png";
 };
