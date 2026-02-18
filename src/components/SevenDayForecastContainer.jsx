@@ -6,7 +6,7 @@ export const SevenDayForecastContainer = () => {
 
   return (
     <div className="field">
-      <div className="uppercase mb-7.5 font-bold">7-Day Forecast</div>
+      <div className="uppercase mb-2 font-bold">7-Day Forecast</div>
       <div className="flex flex-col divide-y divide-white/20">
         {sevenDays.daily.time.map((e, index) => (
           <SevenDayForecastCard
