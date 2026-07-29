@@ -32,7 +32,7 @@ export const getWeatherIcon = (code, time) => {
   }
 
   const hour = parseInt(time.split(":")[0]);
-  const isNight = hour < 6 || hour >= 18;
+  const isNight = hour < 6 || hour >= 21;
 
   if (isNight && nightIcons[code]) {
     return nightIcons[code];
