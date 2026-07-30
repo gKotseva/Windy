@@ -1,18 +1,35 @@
+import { Nav } from "./components/navigation/NavBar";
+import { Loader } from "./components/ui/Loader";
+import { LocationPrompt } from "./components/ui/LocationPrompt";
+import { Overview } from "./pages/Overview";
+import { useWeather } from "./hooks/useWeather";
+import { useLocation } from "./context/LocationContext";
 import { Route, Routes } from "react-router-dom";
-import { Main } from "./pages/Main";
-import { Map } from "./pages/Map";
-import { Sidebar } from "./components/Sidebar";
+import { LiveRadar } from "./pages/LiveRadar";
 
-function App() {
+export const App = () => {
+  const { coords, showPrompt, allowLocation, skipLocation } = useLocation();
+
+  const { weather } = useWeather(coords?.latitude, coords?.longitude);
+
   return (
-    <div className="flex gap-5 bg-[rgb(var(--background))] text-[rgb(var(--text))]">
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/map" element={<Map />} />
-      </Routes>
-    </div>
+    <>
+      {showPrompt && (
+        <LocationPrompt onAllow={allowLocation} onSkip={skipLocation} />
+      )}
+      {coords && !weather && <Loader />}
+      {weather && (
+        <div className="bg-background text-body">
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Overview data={weather} />}></Route>
+            <Route
+              path="/live-radar"
+              element={<LiveRadar data={weather} view="full" />}
+            ></Route>
+          </Routes>
+        </div>
+      )}
+    </>
   );
-}
-
-export default App;
+};
