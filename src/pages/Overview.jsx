@@ -10,27 +10,27 @@ import { WeeklyForecast } from "../components/weather/WeeklyForecast";
 export const Overview = ({ data }) => {
   return (
     <div className="p-10 flex flex-col gap-10">
-      <div className="flex w-full items-center">
-        <div className="flex-[1]">
+      <div className="flex flex-col lg:flex-row gap-6 w-full items-center">
+        <div className="w-full lg:flex-1">
           <CurrentWeather data={data} />
         </div>
 
-        <div className="flex-1">
+        <div className="w-full lg:flex-1">
           <HourlyForecast data={data} />
         </div>
       </div>
       <div>
         <WeeklyForecast data={data} />
       </div>
-      <div className="flex gap-2 w-full items-center">
-        <div className="flex-[1]">
+      <div className="flex flex-col lg:flex-row gap-2 w-full">
+        <div className="w-full lg:flex-1">
           <Details data={data} />
         </div>
-        <div className="flex-[2]">
+        <div className="w-full lg:flex-[2]">
           <LiveRadar data={data} view="overview" />
         </div>
       </div>
-      <div className="flex gap-6">
+      <div className="flex gap-6 flex-wrap">
         <UVIndex data={data} />
         <AirQuality data={data} />
         <SunSchedule data={data} />

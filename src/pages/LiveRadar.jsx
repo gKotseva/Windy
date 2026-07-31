@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { LuArrowUpRight } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
 export const LiveRadar = ({ data, view }) => {
+  const navigate = useNavigate();
   const [radarPath, setRadarPath] = useState(null);
 
   useEffect(() => {
@@ -21,7 +24,7 @@ export const LiveRadar = ({ data, view }) => {
   }, []);
 
   return (
-    <div className="px-20 py-10">
+    <div className={view !== "overview" ? "px-20 py-10" : "p-0"}>
       <div
         className={`relative ${view === "full" ? "h-screen" : "h-[264px]"} w-full overflow-hidden rounded-card`}
       >
@@ -44,18 +47,24 @@ export const LiveRadar = ({ data, view }) => {
             />
           )}
           {view === "overview" && (
-            <>
+            <div
+              className="hover:cursor-pointer"
+              onClick={() => navigate("/live-radar")}
+            >
               <DisableMapInteraction />
-              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-              <div className="absolute left-0 bottom-0 z-[1000] bg-black/40 p-4 backdrop-blur-md">
+              <div className="absolute inset-0 bg-black/20" />
+              <LuArrowUpRight
+                size={60}
+                className="absolute z-[2000] text-neutral right-0 top-[-5px] right-[-5px]"
+              />
+              <div className="absolute left-0 bottom-0 z-[1000] p-2">
                 <div className="uppercase tracking-widest">
-                  <p className="text-body font-bold text-text">Live Radar</p>
-                  <p className="text-body text-white">
-                    Real-time precipitation
+                  <p className="font-bold bg-white text-black py-1 px-5 rounded-2xl">
+                    Live Radar
                   </p>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </MapContainer>
       </div>
