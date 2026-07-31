@@ -28,9 +28,7 @@ The app focuses on performance, clean UI, smart data caching, and reactive user 
 <h2>✨ Features</h2>
 
 <ul>
-  <li>🗺️ Interactive map powered by React Leaflet</li>
-  <li>📍 Click anywhere on the map to fetch weather for that location</li>
-  <li>🔄 Reactive data fetching with automatic caching (React Query)</li>
+  <li>🗺️ Interactive map powered by React Leaflet and RainViewer</li>
   <li>🌙 Light & Dark mode toggle</li>
   <li>⚡ Fast performance with Vite</li>
   <li>📱 Fully responsive design</li>
@@ -53,13 +51,7 @@ The app focuses on performance, clean UI, smart data caching, and reactive user 
     Weather data for the detected location is fetched automatically from the Open-Meteo API.
   </li>
   <li>
-    The response is cached and managed using React Query for optimized performance.
-  </li>
-  <li>
     The interactive map is available on a separate page.
-  </li>
-  <li>
-    On the Map page, users can click anywhere to dynamically fetch weather data for the selected coordinates.
   </li>
 </ol>
 
@@ -73,7 +65,6 @@ The app focuses on performance, clean UI, smart data caching, and reactive user 
   <li>Vite</li>
   <li>Tailwind CSS</li>
   <li>React Leaflet + Leaflet</li>
-  <li>React Query</li>
   <li>React Router DOM</li>
 </ul>
 
@@ -88,10 +79,6 @@ Weather data is fetched from:
 Endpoint: https://api.open-meteo.com/
 </p>
 
-<p>
-Open-Meteo provides free forecast APIs and does not require an API key.
-</p>
-
 ---
 
 <h2>📂 Project Structure</h2>
@@ -99,9 +86,10 @@ Open-Meteo provides free forecast APIs and does not require an API key.
 <pre>
 ├── public/
 │── src/
+│   ├── api/
 │   ├── components/
 │   ├── context/
-│   ├── handlers/
+│   ├── hooks/
 │   ├── pages/
 │   ├── utils/
 │   ├── App.jsx
@@ -127,25 +115,3 @@ App runs at:
 <br/>
 <strong>http://localhost:5173</strong>
 </p>
-
----
-
-<h2>🎨 Theming</h2>
-
-<ul>
-  <li>☀️ Light Mode</li>
-  <li>🌙 Dark Mode</li>
-</ul>
-
-<p>
-Theme switching is handled using React state management and Tailwind's dark mode utilities.
-</p>
-
----
-
-<h2>🌍 Future Improvements</h2>
-
-<ul>
-  <li>📌 Save favorite locations</li>
-  <li>📌 Custom location approval window</li>
-</ul>
