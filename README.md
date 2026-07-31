@@ -7,7 +7,6 @@
   <img src="https://img.shields.io/badge/React-19-blue" />
   <img src="https://img.shields.io/badge/Vite-7-purple" />
   <img src="https://img.shields.io/badge/TailwindCSS-4-38B2AC" />
-  <img src="https://img.shields.io/badge/ReactQuery-5-ff4154" />
 </p>
 
 ---
